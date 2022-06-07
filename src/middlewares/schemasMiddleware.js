@@ -35,3 +35,19 @@ export function signInSchemaValidate(req, res, next) {
 
   next()
 }
+
+export function urlSchemaValidate(req, res, next) {
+  const {body} = req
+  const schema = joi.object({
+    url: joi.string().uri().required()
+  })
+
+  const { error, value } = schema.validate(body, {abortEarly: false});
+
+  if(error) {
+    const errors = error.details.map(e => {return e.message})
+    return res.status(422).send(errors)
+  }
+
+  next()
+}
