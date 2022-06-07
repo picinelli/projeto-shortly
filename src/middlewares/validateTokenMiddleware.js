@@ -19,7 +19,7 @@ export async function validateToken(req, res, next) {
     res.locals.userId = userId
   } catch(e) {
     console.log(e, "Erro no validateToken")
-    res.sendStatus(500)
+    return res.sendStatus(500)
   }
   
   next()

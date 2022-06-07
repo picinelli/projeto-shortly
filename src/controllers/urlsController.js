@@ -4,19 +4,42 @@ import { nanoid } from "nanoid";
 export async function postUrl(req, res) {
   const user = res.locals.userId;
   const { url } = req.body;
-  const shortUrl = nanoid();
+  const shortUrl = nanoid(8);
 
   try {
     await db.query(
       `INSERT INTO urls ("userId", url, "shortUrl")
-      VALUES ($1, $2, $3)
+        VALUES ($1, $2, $3)
       `,
       [user.userId, url, shortUrl]
     );
 
-    res.status(201).send({shortUrl})
+    return res.status(201).send({ shortUrl });
   } catch (e) {
     console.log(e, "Erro no postUrl");
-    res.sendStatus(500);
+    return res.sendStatus(500);
+  }
+}
+
+export async function getUrl(req, res) {
+  const urlId = req.params.id;
+
+  try {
+    const searchUrl = await db.query(
+      `SELECT id, "shortUrl", "url"
+        FROM urls
+        WHERE id = $1`,
+      [urlId]
+    );
+
+    const url = searchUrl.rows[0];
+    if (!url) {
+      return res.sendStatus(404);
+    }
+
+    return res.status(200).send(url);
+  } catch (e) {
+    console.log(e, "Erro no getUrl");
+    return res.sendStatus(500);
   }
 }
