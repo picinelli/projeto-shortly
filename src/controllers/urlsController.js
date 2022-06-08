@@ -65,3 +65,35 @@ export async function openUrl(req, res) {
     return res.sendStatus(500);
   }
 }
+
+export async function deleteUrl(req, res) {
+  const urlId = req.params.id
+  const userData = res.locals.userId;
+
+  try {
+    const userSearch = await db.query(
+      `SELECT urls."shortUrl", urls."userId", urls.id AS "urlId", users.id
+        FROM users
+        JOIN urls ON urls."userId" = users.id
+        WHERE users.id = $1 AND urls.id = $2
+      `, [userData.userId, urlId])
+    const urlData = userSearch.rows[0]
+
+    if(!urlData) {
+      return res.sendStatus(404)
+    }
+    if(urlData.userId !== urlData.id) {
+      return res.sendStatus(401)
+    }
+
+    await db.query(
+      `DELETE FROM urls
+      WHERE id = ${urlData.urlId}
+      `)
+
+    return res.sendStatus(204)
+  } catch(e) {
+    console.log(e, "Erro no deleteUrl")
+    return res.sendStatus(500)
+  }
+}
