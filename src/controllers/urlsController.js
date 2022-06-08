@@ -58,7 +58,7 @@ export async function openUrl(req, res) {
     if (!urlData) {
       return res.sendStatus(404);
     }
-    console.log(urlData.url)
+
     return res.redirect(200, urlData.url)
   } catch (e) {
     console.log(e, "Erro no openUrl");
