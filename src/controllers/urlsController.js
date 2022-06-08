@@ -43,3 +43,25 @@ export async function getUrl(req, res) {
     return res.sendStatus(500);
   }
 }
+
+export async function openUrl(req, res) {
+  const shortUrl = req.params.shortUrl;
+
+  try {
+    const urlSearchAndUpdate = await db.query(
+      `UPDATE urls
+      SET "visitCount" = "visitCount" + 1
+      WHERE "shortUrl" = $1
+      RETURNING *
+      `, [shortUrl]);
+    const urlData = urlSearchAndUpdate.rows[0]
+    if (!urlData) {
+      return res.sendStatus(404);
+    }
+    console.log(urlData.url)
+    return res.redirect(200, urlData.url)
+  } catch (e) {
+    console.log(e, "Erro no openUrl");
+    return res.sendStatus(500);
+  }
+}
