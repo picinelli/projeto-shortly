@@ -2,8 +2,8 @@ import db from '../db.js'
 
 async function postUrl(userId, url, shortUrl) {
   return db.query(
-    `INSERT INTO urls ("userId", url, "shortUrl")
-      VALUES ($1, $2, $3)
+    `INSERT INTO urls ("userId", url, "shortUrl", "visitCount")
+      VALUES ($1, $2, $3, 0)
     `,
     [userId, url, shortUrl]
   );

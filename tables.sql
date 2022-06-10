@@ -11,7 +11,7 @@ CREATE TABLE "urls" (
     "userId" INTEGER REFERENCES "users"("id") NOT NULL,
     "url" TEXT NOT NULL,
     "shortUrl" TEXT NOT NULL,
-    "visitCount" BIGINT,
+    "visitCount" BIGINT DEFAULT 0,
     "createdAt" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
 )
 
