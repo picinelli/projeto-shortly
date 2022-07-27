@@ -22,6 +22,7 @@
 - [Instalação](#instalação)
 - [Rotas](#rotas)
 - [Tecnologias Utilizadas](#tecnologias)
+- [Contato](#contato)
 
 ## Introdução
 
@@ -150,7 +151,7 @@ npm start
 
 <!-- CONTACT -->
 
-### Contato
+## Contato
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Mail][mail-shield]][mail-url]
