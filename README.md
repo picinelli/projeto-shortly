@@ -54,7 +54,7 @@ npm start
     password: "Fulano",
     confirmPassword: "Fulano"
   }
-```
+	```
 
 - **POST /sign-in** </br>
   Esta não é uma rota autenticada. </br>
@@ -64,7 +64,7 @@ npm start
     email: "Fulano@Fulano.com.br",
     password: "Fulano"
   }
-```
+	```
 
 - **POST /urls/shorten** </br>
   **Esta é uma rota autenticada.** </br>
@@ -73,13 +73,13 @@ npm start
   {
     "url": "http(s)://fulano.com.br"
   }
-```
+	```
   Deve responder um corpo (body) no formato: 
     ```
   {
     "shortUrl": "a8745bcf"
   }
-```
+	```
 
 - **GET /urls/:id** </br>
   Esta não é uma rota autenticada. </br>
@@ -88,7 +88,7 @@ npm start
   {
     "shortUrl": "a8745bcf"
   }
-```
+	```
 
 - **GET /urls/open/:shortUrl** </br>
   Esta não é uma rota autenticada. </br>
@@ -116,27 +116,27 @@ npm start
       {...}
     ]
   }
-```
+	```
 
 - **GET /ranking** </br>
   Esta não é uma rota autenticada. </br>
   Deve responder um corpo (body) no formato: 
-  ```
-[
-	{
-		"id": id do usuário,
-		"name": nome do usuário,
-		"linksCount": 5,
-		"visitCount": 100000
-	},
-	{
-		"id": id do usuário,
-		"name": nome do usuário,
-		"linksCount": 3,
-		"visitCount": 85453
-	},
-	{...} //max of 10
-]
+ ```
+  [
+   {
+    "id": id do usuário,
+    "name": nome do usuário,
+    "linksCount": 5,
+    "visitCount": 100000
+   },
+   {
+    "id": id do usuário,
+    "name": nome do usuário,
+    "linksCount": 3,
+    "visitCount": 85453
+   },
+   {...} //max of 10
+  ]
 ```
 
 
