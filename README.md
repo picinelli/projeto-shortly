@@ -16,7 +16,7 @@
     <a href="https://github.com/picinelli/projeto-shortly/tree/main/src"><strong>Código JS»</strong></a>
 </div>
 
-## Table of Contents
+## Sumário
 
 - [Introdução](#Introdução)
 - [Instalação](#features)
