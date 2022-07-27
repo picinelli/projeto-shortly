@@ -18,9 +18,9 @@
 
 ## Sumário
 
-- [Introdução](#Introdução)
-- [Instalação](#features)
-- [Rotas](#feedback)
+- [Introdução](#introdução)
+- [Instalação](#instalação)
+- [Rotas](#rotas)
 - [Tecnologias Utilizadas](#tecnologias)
 
 ## Introdução
